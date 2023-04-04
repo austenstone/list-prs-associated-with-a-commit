@@ -31,5 +31,5 @@ runs:
       REPO: ${{ (inputs.owner && inputs.repository) && format('{0}/{1}', inputs.owner, inputs.repository) || github.repository }}
       COMMIT: '${{ inputs.sha }}'
     shell: bash
-  - run: echo "${{ toJSON(steps.get-associated-prs.outputs) }}"
+  - run: echo ${{ toJSON(steps.get-associated-prs.outputs) }}
     shell: bash
