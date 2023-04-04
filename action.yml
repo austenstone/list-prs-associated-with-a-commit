@@ -24,13 +24,13 @@ inputs:
 runs:
   using: "composite"
   steps:
-  - run: ${{ (inputs.owner && inputs.repository) && (inputs.owner + '/' + inputs.repository) || github.repository }}
+  - run: ${{ (inputs.owner && inputs.repository) && format('{0}/{1}', inputs.owner, inputs.repository) || github.repository }}
     shell: bash
   - id: get-associated-prs
     run: echo "GH_LIST_ASSOC_PRS=$(gh api /repos/$REPO/commits/$COMMIT/pulls)" >> $GITHUB_OUTPUT
     env:
-      GH_TOKEN: '${{ inputs.github-token }}'
-      REPO: '${{ (inputs.owner && inputs.repository) && (inputs.owner + '/' + inputs.repository) || github.repository }}'
+      GH_TOKEN: ${{ inputs.github-token }}
+      REPO: ${{ (inputs.owner && inputs.repository) && format('{0}/{1}', inputs.owner, inputs.repository) || github.repository }}
       COMMIT: '${{ inputs.sha }}'
     shell: bash
   - run: echo "${{ steps.get-associated-prs.outputs.GH_LIST_ASSOC_PRS }}"
