@@ -361,7 +361,7 @@ runs:
           "author_association": "OWNER",
           "auto_merge": null,
           "active_lock_reason": null
-        },{
+        }, {
           "url": "https://api.github.com/repos/austenstone/list-prs-associated-with-a-commit/pulls/1",
           "id": 1301955562,
           "node_id": "PR_kwDOJSrCx85NmkPq",
