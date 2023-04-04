@@ -38,6 +38,8 @@ runs:
       REPO: ${{ (inputs.owner && inputs.repository) && format('{0}/{1}', inputs.owner, inputs.repository) || github.repository }}
       COMMIT: '${{ inputs.sha }}'
     shell: bash
+  - run: echo '${{ steps.get-associated-prs.outputs.PRS }}' | jq '[.[] | .number]'
+    shell: bash
   - id: get-associated-pr-numbers
-    run: echo 'PR_NUMBERS=$(${{ steps.get-associated-prs.outputs.PRS }}' | jq '[.[] | .number])' >> $GITHUB_OUTPUT
+    run: echo 'PR_NUMBERS=$(${{ steps.get-associated-prs.outputs.PRS }}' | jq '[.[] | .number])'
     shell: bash
