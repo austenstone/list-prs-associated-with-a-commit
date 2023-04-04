@@ -33,5 +33,5 @@ runs:
     shell: bash
   - run: echo '${{ steps.get-associated-prs.outputs.PRS }}' | jq '.[] | .number'
     shell: bash
-  - run: echo '${{ toJSON(steps.get-associated-prs.outputs.PRS) }}' | jq '.'
+  - run: echo '${{ steps.get-associated-prs.outputs.PRS }}' | jq '.'
     shell: bash
