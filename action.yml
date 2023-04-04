@@ -32,7 +32,7 @@ runs:
   using: "composite"
   steps:
   - id: get-associated-prs
-    run: echo 'PRS=$(gh api /repos/$REPO/commits/$COMMIT/pulls)' >> $GITHUB_OUTPUT
+    run: echo "PRS=$(gh api /repos/$REPO/commits/$COMMIT/pulls)" >> $GITHUB_OUTPUT
     env:
       GH_TOKEN: ${{ inputs.github-token }}
       REPO: ${{ (inputs.owner && inputs.repository) && format('{0}/{1}', inputs.owner, inputs.repository) || github.repository }}
