@@ -1,6 +1,8 @@
 # Action
 
-A [Composite Action](https://docs.github.com/en/actions/creating-actions/creating-a-composite-action).
+It's hard to get the PR associated with a merge because of rebase or squash.
+
+This action uses the [List pull requests associated with a commit](https://docs.github.com/en/rest/commits/commits?apiVersion=2022-11-28#list-pull-requests-associated-with-a-commit) API to get the PRs associated with a commit.
 
 ## Usage
 Create a workflow (eg: `.github/workflows/usage.yml`). See [Creating a Workflow file](https://help.github.com/en/articles/configuring-a-workflow#creating-a-workflow-file).
@@ -42,13 +44,16 @@ Various inputs are defined in [`action.yml`](action.yml):
 | Name | Description | Default |
 | --- | - | - |
 | github&#x2011;token | Token to use to authorize. | ${{&nbsp;github.token&nbsp;}} |
+| owner | Owner of the repository. | N/A |
+| repo | Name of the repository. | N/A |
+| sha | The commit SHA. | ${{&nbsp;github.event.after&nbsp; || &nbsp;github.sha&nbsp;}} |
 
-<!-- 
+
 ## ⬅️ Outputs
 | Name | Description |
 | --- | - |
-| output | The output. |
--->
+| prs | The PRs associated with the commit as JSON. |
+| pr-numbers | The PR numbers associated with the commit as JSON. |
 
 ## Further help
 To get more help on the Actions see [documentation](https://docs.github.com/en/actions).
