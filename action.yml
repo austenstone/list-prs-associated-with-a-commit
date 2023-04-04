@@ -14,7 +14,7 @@ inputs:
     required: false
   sha:
     description: The SHA of the commit
-    default: ${{ github.event.after }}
+    default: ${{ github.event.after || github.sha }}
     required: false
   github-token:
     description: The GitHub token used to create an authenticated client
