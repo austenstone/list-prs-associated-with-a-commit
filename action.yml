@@ -1,0 +1,18 @@
+name: Composite Action
+author: Austen Stone
+description: A Composite Action
+branding:
+  icon: "plus"
+  color: "blue"
+
+inputs:
+  github-token:
+    description: The GitHub token used to create an authenticated client
+    default: ${{ github.token }}
+    required: false
+
+runs:
+  using: "composite"
+  steps:
+    - run: echo Hello World!
+      shell: bash
