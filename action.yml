@@ -1,6 +1,6 @@
 name: Get Associated PRs
 author: Austen Stone
-description: Get PRs associated with a commit
+description: Get PRs associated with a commit or merge
 branding:
   icon: "plus"
   color: "blue"
