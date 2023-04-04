@@ -41,5 +41,5 @@ runs:
   - run: echo '${{ steps.get-associated-prs.outputs.PRS }}' | jq -c '[.[] | .number]'
     shell: bash
   - id: get-associated-pr-numbers
-    run: echo 'PR_NUMBERS=$('${{ steps.get-associated-prs.outputs.PRS }}' | jq -c '[.[] | .number])' >> $GITHUB_OUTPUT
+    run: echo 'PR_NUMBERS=$('${{ steps.get-associated-prs.outputs.PRS }}' | jq -c '[.[] | .number]')' >> $GITHUB_OUTPUT
     shell: bash
