@@ -30,7 +30,7 @@ runs:
     run: echo "GH_LIST_ASSOC_PRS=$(gh api /repos/$REPO/commits/$COMMIT/pulls)" >> $GITHUB_OUTPUT
     env:
       GH_TOKEN: ${{ inputs.github-token }}
-      REPO: ${{ (inputs.owner && inputs.repository) ? inputs.owner + '/' + inputs.repository : github.repository }}
+      REPO: '${{ (inputs.owner && inputs.repository) ? inputs.owner + '/' + inputs.repository : github.repository }}'
       COMMIT: ${{ inputs.sha || github.event.after }}
     shell: bash
   - run: echo "${{ steps.get-associated-prs.outputs.GH_LIST_ASSOC_PRS }}"
