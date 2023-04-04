@@ -31,7 +31,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - id: get-pr
-        uses: austenstone/action-composite@main
+        uses: austenstone/list-prs-associated-with-a-commit@main
       - run: echo '${{ fromJson(steps.get-pr.outputs.prs)[0].number }}'
       - run: echo '${{ fromJson(steps.get-pr.outputs.pr-numbers)[0] }}'
 ```
