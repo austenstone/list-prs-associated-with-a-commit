@@ -10,4 +10,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: ./
+      - id: get-pr
+        uses: ./
+      - run: echo '${{ steps.get-pr.outputs.prs }}'
+        shell: bash
+      - run: echo '${{ steps.get-pr.outputs.pr-numbers }}'
+        shell: bash

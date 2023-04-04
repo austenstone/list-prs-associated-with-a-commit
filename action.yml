@@ -24,7 +24,7 @@ outputs:
   prs:
     description: The PRs associated with the commit as a JSON string
     value: ${{ steps.get-associated-prs.outputs.PRS }}
-  pr_numbers:
+  pr-numbers:
     description: The PR numbers associated with the commit as a JSON string
     value: ${{ steps.get-associated-pr-numbers.outputs.PR_NUMBERS }}
 
@@ -37,8 +37,6 @@ runs:
       GH_TOKEN: ${{ inputs.github-token }}
       REPO: ${{ (inputs.owner && inputs.repository) && format('{0}/{1}', inputs.owner, inputs.repository) || github.repository }}
       COMMIT: '${{ inputs.sha }}'
-    shell: bash
-  - run: echo '${{ steps.get-associated-prs.outputs.PRS }}' | jq -c '[.[] | .number]'
     shell: bash
   - id: get-associated-pr-numbers
     run: echo "PR_NUMBERS=$(echo '${{ steps.get-associated-prs.outputs.PRS }}' | jq -c '[.[] | .number]')" >> $GITHUB_OUTPUT
