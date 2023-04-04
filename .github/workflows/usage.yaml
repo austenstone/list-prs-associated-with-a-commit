@@ -13,6 +13,4 @@ jobs:
       - id: get-pr
         uses: ./
       - run: echo '${{ fromJson(steps.get-pr.outputs.prs)[0].number }}'
-        shell: bash
       - run: echo '${{ fromJson(steps.get-pr.outputs.pr-numbers)[0] }}'
-        shell: bash

@@ -18,8 +18,10 @@ If your organization has SAML enabled you must authorize the PAT, see [Authorizi
 
 #### Example
 ```yml
-name: Action Workflow
+name: Usage
 on:
+  push:
+  pull_request:
   workflow_dispatch:
 
 jobs:
@@ -27,7 +29,11 @@ jobs:
     name: Run Action
     runs-on: ubuntu-latest
     steps:
-      - uses: austenstone/action-composite@main
+      - uses: actions/checkout@v3
+      - id: get-pr
+        uses: austenstone/action-composite@main
+      - run: echo '${{ fromJson(steps.get-pr.outputs.prs)[0].number }}'
+      - run: echo '${{ fromJson(steps.get-pr.outputs.pr-numbers)[0] }}'
 ```
 
 ## ➡️ Inputs
