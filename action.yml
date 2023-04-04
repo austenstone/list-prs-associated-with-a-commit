@@ -24,6 +24,8 @@ inputs:
 runs:
   using: "composite"
   steps:
+  - run: ${{ (inputs.owner && inputs.repository) && (inputs.owner + '/' + inputs.repository) || github.repository }}
+    shell: bash
   - id: get-associated-prs
     run: echo "GH_LIST_ASSOC_PRS=$(gh api /repos/$REPO/commits/$COMMIT/pulls)" >> $GITHUB_OUTPUT
     env:
@@ -32,3 +34,4 @@ runs:
       COMMIT: '${{ inputs.sha }}'
     shell: bash
   - run: echo "${{ steps.get-associated-prs.outputs.GH_LIST_ASSOC_PRS }}"
+    shell: bash
