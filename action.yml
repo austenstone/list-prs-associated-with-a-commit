@@ -1,6 +1,6 @@
-name: Composite Action
+name: Get Associated PRs
 author: Austen Stone
-description: A Composite Action
+description: Get PRs associated with a commit
 branding:
   icon: "plus"
   color: "blue"
