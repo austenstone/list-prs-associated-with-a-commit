@@ -24,7 +24,7 @@ inputs:
 runs:
   using: "composite"
   steps:
-  - run: ${{ (inputs.owner && inputs.repository) && format('{0}/{1}', inputs.owner, inputs.repository) || github.repository }}
+  - run: echo '${{ (inputs.owner && inputs.repository) && format('{0}/{1}', inputs.owner, inputs.repository) || github.repository }}'
     shell: bash
   - id: get-associated-prs
     run: echo "GH_LIST_ASSOC_PRS=$(gh api /repos/$REPO/commits/$COMMIT/pulls)" >> $GITHUB_OUTPUT
